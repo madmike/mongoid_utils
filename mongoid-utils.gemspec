@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mongoid/version'
+require 'mongoid/utils/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mongoid_utils"
+  spec.name          = "mongoid-utils"
   spec.version       = Mongoid::Utils::VERSION
   spec.authors       = ["Michail"]
   spec.email         = ["xbiznet@gmail.com"]
