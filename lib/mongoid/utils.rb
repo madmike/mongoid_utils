@@ -1,8 +1,6 @@
 require 'mongoid/utils/version'
 
 require 'mongoid/counter_cache'
-
-require 'mongoid/utils/comment'
 require 'mongoid/utils/hit'
 
 require 'mongoid/utils/commentable'

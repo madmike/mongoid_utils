@@ -6,7 +6,7 @@ module Mongoid
       included do
         scope :discussable, -> {order_by(comments_count: :desc)}
 
-        has_many :comments, class_name: 'Mongoid::Utils::Comment', as: :commentable, dependent: :destroy
+        has_many :comments, as: :commentable, dependent: :destroy
         field :comments_count, type: Integer, default: 0
       end
 
