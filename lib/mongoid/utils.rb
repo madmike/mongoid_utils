@@ -1,12 +1,13 @@
-require 'mongoid/version'
+require 'mongoid/utils/version'
 
-require 'comment'
-require 'hit'
-require 'mongoid_counter_cache'
+require 'mongoid/counter_cache'
 
-require 'mongoid/commentable'
-require 'mongoid/hitable'
-require 'mongoid/listable'
-require 'mongoid/sluggable'
-require 'mongoid/sortable'
-require 'mongoid/votable'
+require 'mongoid/utils/comment'
+require 'mongoid/utils/hit'
+
+require 'mongoid/utils/commentable'
+require 'mongoid/utils/hitable'
+require 'mongoid/utils/listable'
+require 'mongoid/utils/sluggable'
+require 'mongoid/utils/sortable'
+require 'mongoid/utils/votable'

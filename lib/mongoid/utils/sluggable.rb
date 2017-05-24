@@ -1,23 +1,27 @@
-module Mongoid::Sluggable
-  extend ActiveSupport::Concern
+module Mongoid
+  module Utils
+    module Sluggable
+      extend ActiveSupport::Concern
 
-  included do
-    before_save :generate_slug
+      included do
+        before_save :generate_slug
 
-    field :slug, type: String
-  end
+        field :slug, type: String
+      end
 
-  def to_param
-    slug
-  end
+      def to_param
+        slug
+      end
 
-  def generate_slug
-    self.slug = title.parameterize.strip
-  end
+      def generate_slug
+        self.slug = title.parameterize.strip
+      end
 
-  module ClassMethods
-    def from_param(param)
-     find_by(slug: param)
+      module ClassMethods
+        def from_param(param)
+         find_by(slug: param)
+        end
+      end
     end
   end
 end
