@@ -1,5 +1,6 @@
 require 'mongoid/utils/version'
 
+require 'mongoid/created_at'
 require 'mongoid/counter_cache'
 require 'mongoid/utils/hit'
 

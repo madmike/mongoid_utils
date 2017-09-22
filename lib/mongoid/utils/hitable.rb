@@ -15,7 +15,7 @@ module Mongoid
 
         unless seen
           hits.create(digest: hit_digest)
-          self.update_attribute(:hits_count, hits_count + 1)
+          self.timeless.update_attribute(:hits_count, hits_count + 1)
         end
       end
 

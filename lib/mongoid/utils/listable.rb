@@ -14,7 +14,8 @@ module Mongoid
     #    @hash ||= Hash[lists.map { |list| [list.model_name.param_key.to_sym, list] }]#.group_by(&:first).map { |k,v| {k => (el = v.map(&:last)).length > 1 ? el : el[0]} }.last || {}
         unless @hash
           hashes = lists.map{ |list| Hash[*[list.model_name.param_key.to_sym, list]] }
-          @hash ||= hashes.flat_map(&:entries).group_by(&:first).map{|k,v| Hash[k, v.map(&:last)]}[0] || {}
+          @hash ||= hashes.flat_map(&:entries).group_by(&:first).map{|k,v| Hash[k, v.map(&:last)]}.reduce(Hash.new, :merge) || {}
+          @hash.each {|k,v| if v.length == 1 then @hash[k] = v.first end}
                     #hashes.inject{ |h1,h2| h1.merge(h2){ |*a| a[1,2] } } || {}
         end
 
