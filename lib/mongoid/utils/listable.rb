@@ -23,7 +23,24 @@ module Mongoid
       end
 
       def list_title(list)
-        lists_hash[list].is_a?(Array) ? lists_hash[list].collect(&:title).join(', ') : lists_hash[list].try(:title)
+    #    lists_hash[list].is_a?(Array) ? lists_hash[list].collect(&:title).join(', ') : lists_hash[list].try(:title)
+        if lists_hash[list].is_a?(Array)
+          lists_hash[list].map { |l|
+            l.is_a?(Array) ? l.collect(&:title).join(', ') : l.try(:title)
+          }
+        else
+          lists_hash[list].try(:title)
+        end
+      end
+
+      def update_lists(new_lists)
+        _lists = self.lists
+
+        new_lists.each do |new_list|
+          _lists = _lists.delete_if { |list| list.is_a? new_list.class }
+        end
+
+        self.lists = (_lists + new_lists)
       end
     end
   end
