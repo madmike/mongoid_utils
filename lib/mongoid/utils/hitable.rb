@@ -9,7 +9,7 @@ module Mongoid
         has_many :hits, class_name: 'Mongoid::Utils::Hit', as: :hitable, dependent: :destroy
         field :hits_count, type: Integer, default: 0
         
-        index({ hits_count: 1 }, { name: "lists_index" })
+        index({ hits_count: 1 }, { name: "hits_index" })
       end
 
       def hitted(hit_digest)

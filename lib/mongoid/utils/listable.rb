@@ -7,7 +7,7 @@ module Mongoid
         has_and_belongs_to_many :lists, inverse_of: nil
         after_update -> { @hash = nil }
 
-        index({ list_ids: 1 }, { sparse: true, name: "lists_index" })
+        index({ list_ids: 1 }, { sparse: true })
       end
 
       def lists_hash
