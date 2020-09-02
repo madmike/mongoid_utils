@@ -10,10 +10,10 @@ module Mongoid
       module ClassMethods
         def fresh_by(param)
           range = case param
-            when 'day'; Time.now.at_beginning_of_day..Time.now
-            when 'week'; Time.now.at_beginning_of_week..Time.now
-            when 'month'; Time.now.at_beginning_of_month..Time.now
-            when 'year'; Time.now.at_beginning_of_year..Time.now
+            when 'day'; 24.hours.ago..Time.now
+            when 'week'; 7.days.ago..Time.now
+            when 'month'; 30.days.ago..Time.now
+            when 'year'; 365.days.ago..Time.now
           end
 
           between(:id.in => BSON::ObjectId.from_time(range.first)..BSON::ObjectId.from_time(range.last))
