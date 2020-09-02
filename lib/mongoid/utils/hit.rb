@@ -9,7 +9,7 @@ module Mongoid
       field :hitable_id, type: BSON::ObjectId
       field :hitable_type, type: String
       
-      index({ :digest 1 }, { name: "hits_digest" })
+      index({ digest: 1 }, { name: "hits_digest" })
     end
   end
 end
